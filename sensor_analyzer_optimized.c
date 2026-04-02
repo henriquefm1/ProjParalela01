@@ -1,3 +1,7 @@
+//Henrique Ferreira Marciano RA: 10439797
+//Pedro Casas Pequeno Junior RA: 10437031
+//Pedro Henrique Saraiva Arruda RA: 10437747
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
