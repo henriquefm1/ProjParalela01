@@ -1,8 +1,6 @@
-/*
- * versão sequencial do analisador de logs de sensores
- * formato de cada linha do log
- * sensor_id YYYY-MM-DD HH:MM:SS tipo_sensor valor status STATUS
- */
+//Henrique Ferreira Marciano RA: 10439797
+//Pedro Casas Pequeno Junior RA: 10437031
+//Pedro Henrique Saraiva Arruda RA: 10437747
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,8 +9,8 @@
 #include <time.h>
 
 
-// Estrutura de estatísticas por sensor
-//  Não armazenamos as linhas em memória, atualizamos estatísticas incrementalmente (soma, soma de quadrados, contagem)
+// estrutura de estatísticas por sensor
+// não armazenamos as linhas em memória, atualizamos estatísticas incrementalmente (soma, soma de quadrados, contagem)
 
 typedef struct {
     char   nome[32];
@@ -55,7 +53,7 @@ static Status_sensor *buscar_ou_criar(const char *nome) {
     return s;
 }
 
-// Formato: sensor_id data hora tipo valor status STATUS
+// formato: sensor_id data hora tipo valor status status
 
 static void processar_linha(char *linha) {
     char sensor_id[32], tipo[20], status[10];
@@ -152,7 +150,7 @@ int main(int argc, char *argv[]) {
         exibidos++;
     }
 
-    /* Sensor mais instável */
+    // sensor mais instavel
     Status_sensor *instavel = NULL;
     double maior_dp = -1.0;
     for (int i = 0; i < n_sensores; i++) {
