@@ -7,6 +7,7 @@
 #include <string.h>
 #include <math.h> // adicionei a math.h por causa do sqrt()
 #include <pthread.h>
+#include <time.h> // adicionei a time.h para garantir o funcionamento do relógio
 
 //estrutura para armazenar o arquivo de forma mais compacta
 typedef struct{
@@ -165,6 +166,10 @@ int main(int argc, char *argv[]){
     int num_threads = atoi(argv[1]);
     char *nome_arquivo = argv[2];
 
+    //inicio do cronometro
+    struct timespec t0, t1;
+    clock_gettime(CLOCK_MONOTONIC, &t0);
+
     //vetor dinamico
     long capacidade = 1000000; //começa com 1 milhao
     long total_leituras = 0;
@@ -207,10 +212,6 @@ int main(int argc, char *argv[]){
     fclose(f);
 
     printf("Total de linhas: %ld\n", total_leituras);
-
-    //iniciar cronometros e thread
-    struct timespec t0, t1;
-    clock_gettime(CLOCK_MONOTONIC, &t0);
 
     //inicia mutex
     pthread_mutex_init(&mutex_global, NULL);
