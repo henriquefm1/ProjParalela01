@@ -49,7 +49,7 @@ static Status_sensor *buscar_ou_criar(const char *nome) {
 
     Status_sensor *s = &sensores[n_sensores++];
     memset(s, 0, sizeof(*s));
-    strncpy(s->nome, nome, sizeof(s->nome) - 1);
+    snprintf(s->nome, sizeof(s->nome), "%s", nome);
     return s;
 }
 
